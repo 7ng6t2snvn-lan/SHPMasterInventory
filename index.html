@@ -11,11 +11,20 @@
             box-sizing: border-box;
         }
 
+        html {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             background: #0f172a;
             min-height: 100vh;
             color: #e2e8f0;
+            overflow-x: hidden;
+            max-width: 100vw;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* PIN Screen */
@@ -141,28 +150,35 @@
         /* Main App */
         #mainApp {
             display: none;
-            max-width: 1400px;
+            max-width: 100%;
+            width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 16px;
+            overflow-x: hidden;
         }
 
         .app-header {
             background: #1e293b;
-            padding: 20px 24px;
+            padding: 16px 20px;
             border-radius: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .app-header h1 {
             color: #22d3ee;
-            font-size: 1.8em;
+            font-size: 1.5em;
             font-weight: 700;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .header-actions {
@@ -225,10 +241,15 @@
         /* Content Area */
         .content-area {
             background: #1e293b;
-            padding: 24px;
+            padding: 20px;
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             min-height: 500px;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .section-header {
@@ -396,13 +417,19 @@
         }
 
         .substance-card {
-            background: #2d3b52;
+            background: #2d3748;
             padding: 20px;
             border-radius: 16px;
             cursor: pointer;
             transition: all 0.2s;
             border: 1px solid #3d4d68;
             border-left: 4px solid #f97316;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .substance-card:hover {
@@ -418,6 +445,9 @@
             margin-bottom: 8px;
             font-size: 17px;
             font-weight: 700;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .substance-card .category {
@@ -435,6 +465,8 @@
             color: #94a3b8;
             font-size: 13px;
             line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* Buttons */
@@ -608,13 +640,14 @@
             display: block;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
+            max-width: 100%;
         }
 
         .data-table thead,
         .data-table tbody {
             display: table;
             width: 100%;
-            table-layout: fixed;
+            table-layout: auto;
         }
 
         .data-table th {
@@ -624,7 +657,7 @@
             font-weight: 700;
             color: #94a3b8;
             border-bottom: 2px solid #2d3b52;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             white-space: nowrap;
@@ -636,6 +669,7 @@
             color: #e2e8f0;
             word-wrap: break-word;
             overflow-wrap: break-word;
+            max-width: 200px;
         }
 
         .data-table tr:hover {
@@ -652,6 +686,8 @@
             flex-direction: column;
             gap: 20px;
             margin-top: 20px;
+            width: 100%;
+            max-width: 100%;
         }
 
         .inventory-card {
@@ -661,6 +697,12 @@
             padding: 24px;
             transition: all 0.2s;
             position: relative;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .inventory-card-header {
@@ -668,23 +710,31 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 12px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .inventory-card-title-group {
             flex: 1;
+            min-width: 0;
         }
 
         .inventory-card-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #e2e8f0;
             margin-bottom: 8px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .inventory-card-subtitle {
             font-size: 14px;
             color: #94a3b8;
             font-weight: 500;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .inventory-card-badges {
