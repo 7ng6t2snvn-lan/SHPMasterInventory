@@ -1702,9 +1702,14 @@ function renderInventory() {
                             </div>
                         </div>
                         
-                        <button class="add-vial-btn" onclick="openUseSellModal('${item.substanceId}')">
-                            + Add Vial (${vialSize}mg)
-                        </button>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+                            <button class="btn btn-primary" onclick="openAddInventoryModal('${item.substanceId}')" style="padding: 14px; font-size: 15px;">
+                                + Add Vial
+                            </button>
+                            <button class="btn btn-secondary" onclick="openUseSellModal('${item.substanceId}')" style="padding: 14px; font-size: 15px;">
+                                Use/Sell
+                            </button>
+                        </div>
                     </div>
                 `;
             }).join('')}
