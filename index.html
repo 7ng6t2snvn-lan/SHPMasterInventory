@@ -1009,10 +1009,42 @@
             <!-- Reports Tab -->
             <div id="reports" class="tab-content">
                 <h2 style="margin-bottom: 25px;">Reports & Export</h2>
-                <div style="display: grid; gap: 15px; max-width: 600px;">
-                    <button class="btn btn-primary" onclick="exportToCSV()">📊 Export to CSV</button>
-                    <button class="btn btn-primary" onclick="exportToGoogleSheets()">📗 Export to Google Sheets</button>
-                    <button class="btn btn-primary" onclick="importFromGoogleSheets()">📥 Import from Google Sheets</button>
+                
+                <div style="max-width: 700px;">
+                    <h3 style="color: #22d3ee; margin-bottom: 16px;">Export Data</h3>
+                    <div style="display: grid; gap: 12px; margin-bottom: 40px;">
+                        <button class="btn btn-primary" onclick="exportToCSV()">📊 Export to CSV</button>
+                        <button class="btn btn-primary" onclick="exportToGoogleSheets()">📗 Export to Google Sheets</button>
+                    </div>
+                    
+                    <h3 style="color: #22d3ee; margin-bottom: 16px;">Import from Google Sheets</h3>
+                    <div style="background: #2d3748; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #22d3ee;">
+                        <h4 style="color: #e2e8f0; margin-bottom: 12px; font-size: 16px;">📋 Required Format</h4>
+                        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 16px;">
+                            Your Google Sheet must have these columns in order:
+                        </p>
+                        <ol style="color: #94a3b8; font-size: 13px; line-height: 2; padding-left: 20px;">
+                            <li>Substance Name</li>
+                            <li>Category (peptide/bioregulator/aas/custom)</li>
+                            <li>Quantity (number of vials)</li>
+                            <li>Vial Size (mg per vial)</li>
+                            <li>Price Paid</li>
+                            <li>Vendor</li>
+                            <li>Date Received (YYYY-MM-DD)</li>
+                            <li>Lot Number (optional)</li>
+                            <li>Transaction Type (purchase/groupbuy/gift)</li>
+                            <li>Notes (optional)</li>
+                        </ol>
+                    </div>
+                    
+                    <div style="background: #2d3748; padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #10b981;">
+                        <h4 style="color: #e2e8f0; margin-bottom: 12px; font-size: 16px;">✅ Example Row</h4>
+                        <pre style="background: #0f172a; padding: 12px; border-radius: 8px; color: #10b981; font-size: 12px; overflow-x: auto;">BPC-157,peptide,5,10,250,PeptideSciences,2026-01-01,LOT123,purchase,Healing</pre>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="importFromGoogleSheets()" style="width: 100%;">
+                        📤 Import from CSV
+                    </button>
                 </div>
             </div>
         </div>
@@ -2112,12 +2144,133 @@ function exportToGoogleSheets() {
 }
 
 function importFromGoogleSheets() {
-    alert('Google Sheets Import\n\n' +
-          'To import from Google Sheets:\n' +
-          '1. Download your sheet as CSV\n' +
-          '2. Format columns to match PPA format\n' +
-          '3. Use browser file import (coming soon)\n\n' +
-          'Direct API integration coming in future update!');
+    const instructions = `Google Sheets Import Format:
+
+Required Columns (in this order):
+1. Substance Name
+2. Category (peptide/bioregulator/aas/custom)
+3. Quantity (number of vials)
+4. Vial Size (mg per vial)
+5. Price Paid
+6. Vendor
+7. Date Received (YYYY-MM-DD)
+8. Lot Number (optional)
+9. Transaction Type (purchase/groupbuy/gift)
+10. Notes (optional)
+
+Example Row:
+BPC-157,peptide,5,10,250,PeptideSciences,2026-01-01,LOT123,purchase,Healing protocol
+
+Steps:
+1. Format your Google Sheet with columns above
+2. File > Download > CSV (.csv)
+3. Select your CSV file in the next dialog
+
+Direct Google Sheets API integration coming soon!`;
+    
+    alert(instructions);
+    
+    // Trigger file input for CSV import
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '.csv';
+    fileInput.onchange = handleCSVImport;
+    fileInput.click();
+}
+
+function handleCSVImport(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const text = e.target.result;
+        const lines = text.split('\n');
+        
+        let imported = 0;
+        let errors = [];
+        
+        // Skip header row if it exists
+        const startIndex = lines[0].toLowerCase().includes('substance') ? 1 : 0;
+        
+        for (let i = startIndex; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) continue;
+            
+            const parts = line.split(',').map(p => p.trim().replace(/^"|"$/g, ''));
+            
+            if (parts.length < 7) {
+                errors.push(`Line ${i + 1}: Not enough columns (need at least 7)`);
+                continue;
+            }
+            
+            const [substanceName, category, quantity, vialSize, pricePaid, vendor, dateReceived, lotNumber, transactionType, notes] = parts;
+            
+            // Find or create substance
+            let substance = substances.find(s => s.name.toLowerCase() === substanceName.toLowerCase());
+            if (!substance) {
+                substance = {
+                    id: 'import_' + Date.now() + '_' + i,
+                    name: substanceName,
+                    category: category || 'custom',
+                    commonDosage: '',
+                    notes: 'Imported from CSV'
+                };
+                substances.push(substance);
+            }
+            
+            const qty = parseFloat(quantity);
+            const size = parseFloat(vialSize);
+            const price = parseFloat(pricePaid);
+            
+            if (isNaN(qty) || isNaN(size) || isNaN(price)) {
+                errors.push(`Line ${i + 1}: Invalid numbers (qty: ${quantity}, size: ${vialSize}, price: ${pricePaid})`);
+                continue;
+            }
+            
+            // Add to inventory
+            const inventoryItem = {
+                id: 'import_inv_' + Date.now() + '_' + i,
+                substanceId: substance.id,
+                quantity: qty,
+                vialSize: size,
+                totalMg: qty * size,
+                pricePaid: price,
+                vendor: vendor || 'Imported',
+                dateReceived: dateReceived || new Date().toISOString().split('T')[0],
+                lotNumber: lotNumber || ''
+            };
+            
+            inventory.push(inventoryItem);
+            
+            // Add transaction
+            transactions.push({
+                ...inventoryItem,
+                transactionType: transactionType || 'purchase',
+                notes: notes || 'Imported from CSV'
+            });
+            
+            imported++;
+        }
+        
+        saveData();
+        renderDashboard();
+        renderDatabase();
+        renderInventory();
+        renderTransactions();
+        
+        let message = `✅ Successfully imported ${imported} items!`;
+        if (errors.length > 0) {
+            message += `\n\n⚠️ Errors found:\n${errors.slice(0, 5).join('\n')}`;
+            if (errors.length > 5) {
+                message += `\n...and ${errors.length - 5} more errors`;
+            }
+        }
+        
+        alert(message);
+    };
+    
+    reader.readAsText(file);
 }
 
 function formatCategory(category) {
