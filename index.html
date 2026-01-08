@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            background: #1e293b;
+            background: #0f172a;
             min-height: 100vh;
             color: #e2e8f0;
         }
@@ -26,18 +26,17 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            background: #1e293b;
+            background: #0f172a;
         }
 
         .pin-container {
-            background: #334155;
+            background: #1e293b;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             text-align: center;
             max-width: 400px;
             width: 100%;
-            border: 1px solid rgba(148, 163, 184, 0.1);
         }
 
         .pin-container h1 {
@@ -58,12 +57,12 @@
             padding: 15px;
             font-size: 32px;
             text-align: center;
-            border: 2px solid #475569;
+            border: 2px solid #2d3b52;
             border-radius: 10px;
             margin-bottom: 20px;
             letter-spacing: 20px;
             font-weight: bold;
-            background: #1e293b;
+            background: #0f172a;
             color: #22d3ee;
             caret-color: transparent;
         }
@@ -89,8 +88,8 @@
             padding: 20px;
             font-size: 24px;
             font-weight: 600;
-            background: #1e293b;
-            border: 2px solid #475569;
+            background: #0f172a;
+            border: 2px solid #2d3b52;
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s;
@@ -99,14 +98,14 @@
         
         .key-btn:active {
             transform: scale(0.95);
-            background: #334155;
+            background: #1e293b;
             border-color: #22d3ee;
         }
         
         .key-btn.delete {
-            background: #2d1f28;
+            background: #1e1420;
             color: #ef4444;
-            border-color: #52283d;
+            border-color: #3d2a2a;
         }
         
         .enter-btn {
@@ -148,17 +147,16 @@
         }
 
         .app-header {
-            background: #334155;
-            padding: 20px 30px;
-            border-radius: 15px;
+            background: #1e293b;
+            padding: 20px 24px;
+            border-radius: 16px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 15px;
-            border: 1px solid rgba(148, 163, 184, 0.1);
         }
 
         .app-header h1 {
@@ -190,25 +188,24 @@
 
         /* Navigation */
         .nav-tabs {
-            background: #334155;
+            background: #1e293b;
             padding: 8px;
-            border-radius: 15px;
+            border-radius: 16px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             display: flex;
             gap: 8px;
             overflow-x: auto;
             flex-wrap: wrap;
-            border: 1px solid rgba(148, 163, 184, 0.1);
         }
 
         .nav-tab {
-            padding: 12px 24px;
+            padding: 12px 20px;
             border: none;
-            background: #1e293b;
+            background: #0f172a;
             border-radius: 10px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: #94a3b8;
             transition: all 0.2s;
@@ -216,7 +213,7 @@
         }
 
         .nav-tab:hover {
-            background: #475569;
+            background: #2d3b52;
             color: #e2e8f0;
         }
 
@@ -227,12 +224,28 @@
 
         /* Content Area */
         .content-area {
-            background: #334155;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background: #1e293b;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             min-height: 500px;
-            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .section-header {
+            margin-bottom: 24px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            color: #94a3b8;
+            font-size: 15px;
         }
 
         .tab-content {
@@ -243,7 +256,49 @@
             display: block;
         }
 
-        /* Dashboard */
+        /* Filter Pills */
+        .filter-pills {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding: 4px 0;
+        }
+
+        .filter-pill {
+            padding: 12px 24px;
+            border: 2px solid #3d4d68;
+            background: transparent;
+            color: #94a3b8;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .filter-pill:hover {
+            border-color: #22d3ee;
+            color: #22d3ee;
+        }
+
+        .filter-pill.active {
+            background: #22d3ee;
+            border-color: #22d3ee;
+            color: #0f172a;
+        }
+
+        .filter-pill.purple {
+            border-color: #8b5cf6;
+            color: #a78bfa;
+        }
+
+        .filter-pill.purple.active {
+            background: #8b5cf6;
+            border-color: #8b5cf6;
+            color: white;
+        }
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -287,11 +342,11 @@
         .search-box {
             width: 100%;
             padding: 15px 20px;
-            border: 2px solid #475569;
-            border-radius: 10px;
+            border: 2px solid #2d3b52;
+            border-radius: 12px;
             font-size: 16px;
             transition: all 0.2s;
-            background: #1e293b;
+            background: #0f172a;
             color: #e2e8f0;
         }
 
@@ -341,40 +396,43 @@
         }
 
         .substance-card {
-            background: #f8f9fa;
+            background: #2d3b52;
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 16px;
             cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
+            transition: all 0.2s;
+            border: 1px solid #3d4d68;
+            border-left: 4px solid #f97316;
         }
 
         .substance-card:hover {
-            background: #fff;
-            border-color: #06b6d4;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            background: #354361;
+            border-color: #22d3ee;
+            border-left-color: #f97316;
+            box-shadow: 0 4px 20px rgba(34, 211, 238, 0.15);
             transform: translateY(-2px);
         }
 
         .substance-card h4 {
-            color: #333;
+            color: #e2e8f0;
             margin-bottom: 8px;
-            font-size: 16px;
+            font-size: 17px;
+            font-weight: 700;
         }
 
         .substance-card .category {
             display: inline-block;
             padding: 4px 12px;
-            background: #06b6d4;
-            color: white;
-            border-radius: 6px;
+            background: #3d4d68;
+            color: #94a3b8;
+            border-radius: 12px;
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 10px;
         }
 
         .substance-card .info {
-            color: #666;
+            color: #94a3b8;
             font-size: 13px;
             line-height: 1.5;
         }
@@ -435,20 +493,19 @@
         }
 
         .modal-content {
-            background: #334155;
+            background: #1e293b;
             max-width: 600px;
             margin: 50px auto;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 16px;
             position: relative;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            border: 1px solid rgba(148, 163, 184, 0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
         }
 
         .modal-header {
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #475569;
+            border-bottom: 2px solid #2d3b52;
         }
 
         .modal-header h2 {
@@ -500,11 +557,11 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #475569;
+            border: 2px solid #2d3b52;
             border-radius: 8px;
             font-size: 15px;
             transition: all 0.2s;
-            background: #1e293b;
+            background: #0f172a;
             color: #e2e8f0;
         }
 
@@ -528,7 +585,7 @@
         }
 
         .form-group input[readonly] {
-            background: #1e293b;
+            background: #0f172a;
             opacity: 0.6;
             cursor: not-allowed;
         }
@@ -548,32 +605,206 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .data-table thead,
+        .data-table tbody {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
         }
 
         .data-table th {
-            background: #1e293b;
+            background: #0f172a;
             padding: 12px 16px;
             text-align: left;
             font-weight: 700;
             color: #94a3b8;
-            border-bottom: 2px solid #475569;
+            border-bottom: 2px solid #2d3b52;
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .data-table td {
             padding: 16px;
-            border-bottom: 1px solid #475569;
+            border-bottom: 1px solid #2d3b52;
             color: #e2e8f0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .data-table tr:hover {
-            background: #1e293b;
+            background: #0f172a;
         }
 
         .data-table strong {
             color: #22d3ee;
+        }
+
+        /* Inventory Cards - Shot Tracker Style */
+        .inventory-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .inventory-card {
+            background: #2d3748;
+            border: 1px solid #3d4d68;
+            border-radius: 20px;
+            padding: 24px;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .inventory-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .inventory-card-title-group {
+            flex: 1;
+        }
+
+        .inventory-card-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        .inventory-card-subtitle {
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .inventory-card-badges {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .stock-badge {
+            padding: 6px 14px;
+            background: #f97316;
+            color: white;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .stock-badge.low {
+            background: #f97316;
+        }
+
+        .stock-badge.good {
+            background: #10b981;
+        }
+
+        .card-icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #374151;
+            border: none;
+            color: #60a5fa;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .card-icon-btn:hover {
+            background: #4b5563;
+        }
+
+        .card-icon-btn.delete {
+            color: #ef4444;
+        }
+
+        /* Progress Bar */
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 16px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #06b6d4, #22d3ee);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        /* Stats Grid */
+        .inventory-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .inventory-stat {
+            text-align: center;
+        }
+
+        .inventory-stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #22d3ee;
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .inventory-stat-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Add Vial Button */
+        .add-vial-btn {
+            width: 100%;
+            padding: 16px;
+            background: #374151;
+            border: 2px solid #4b5563;
+            border-radius: 12px;
+            color: #e2e8f0;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .add-vial-btn:hover {
+            background: #4b5563;
+            border-color: #22d3ee;
+        }
+
+        /* Image Preview */
+        .vial-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 16px;
         }
 
         /* Responsive */
@@ -690,20 +921,20 @@
             <!-- Database Tab -->
             <div id="database" class="tab-content">
                 <h2 style="margin-bottom: 25px;">Substance Database</h2>
-                <button class="btn btn-primary add-new-btn" onclick="openAddSubstanceModal()">+ Add New Substance</button>
                 
                 <div class="search-container">
-                    <input type="text" class="search-box" id="searchBox" placeholder="Search substances..." onkeyup="filterSubstances()">
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filterByCategory('all')">All</button>
-                        <button class="filter-btn" onclick="filterByCategory('peptide')">Peptides</button>
-                        <button class="filter-btn" onclick="filterByCategory('bioregulator')">Bioregulators</button>
-                        <button class="filter-btn" onclick="filterByCategory('aas')">Anabolic Steroids</button>
-                        <button class="filter-btn" onclick="filterByCategory('custom')">Custom</button>
+                    <input type="text" class="search-box" id="searchBox" placeholder="Search peptides..." onkeyup="filterSubstances()">
+                    <div class="filter-pills">
+                        <button class="filter-pill active" onclick="filterByCategory('all')">All</button>
+                        <button class="filter-pill" onclick="filterByCategory('peptide')">Healing & Recovery</button>
+                        <button class="filter-pill purple" onclick="filterByCategory('bioregulator')">GH Release</button>
+                        <button class="filter-pill" onclick="filterByCategory('aas')">Anabolic</button>
                     </div>
                 </div>
 
                 <div class="substance-grid" id="substanceGrid"></div>
+                
+                <button class="btn btn-primary add-new-btn" onclick="openAddSubstanceModal()" style="margin-top: 20px; width: 100%;">+ Add New Substance</button>
             </div>
 
             <!-- Inventory Tab -->
@@ -1342,7 +1573,7 @@ function renderDatabase() {
 function filterByCategory(category) {
     currentFilter = category;
     
-    document.querySelectorAll('.filter-btn').forEach(btn => {
+    document.querySelectorAll('.filter-pill').forEach(btn => {
         btn.classList.remove('active');
     });
     event.target.classList.add('active');
@@ -1370,6 +1601,7 @@ function renderInventory() {
                 totalVials: 0,
                 totalMg: 0,
                 totalValue: 0,
+                totalDoses: 0,
                 entries: []
             };
         }
@@ -1380,35 +1612,73 @@ function renderInventory() {
     });
     
     content.innerHTML = `
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Substance</th>
-                    <th>Total Vials</th>
-                    <th>Total mg</th>
-                    <th>Total Value</th>
-                    <th>Avg Cost/mg</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${Object.values(grouped).map(item => {
-                    const avgCost = item.totalMg > 0 ? (item.totalValue / item.totalMg) : 0;
-                    return `
-                        <tr>
-                            <td onclick="showInventoryDetails('${item.substanceId}')" style="cursor: pointer;"><strong>${getSubstanceName(item.substanceId)}</strong></td>
-                            <td>${item.totalVials}</td>
-                            <td>${item.totalMg.toFixed(1)} mg</td>
-                            <td>$${item.totalValue.toFixed(2)}</td>
-                            <td>$${avgCost.toFixed(3)}/mg</td>
-                            <td><button class="btn btn-primary btn-small" onclick="openUseSellModal('${item.substanceId}')">Use/Sell</button></td>
-                        </tr>
-                    `;
-                }).join('')}
-            </tbody>
-        </table>
+        <div class="inventory-list">
+            ${Object.values(grouped).map(item => {
+                const substance = substances.find(s => s.id === item.substanceId);
+                const vialSize = item.entries[0]?.vialSize || 0;
+                const progressPercent = Math.min((item.totalMg / (vialSize * 10)) * 100, 100);
+                const isLowStock = item.totalVials < 2;
+                
+                return `
+                    <div class="inventory-card">
+                        <div class="inventory-card-header">
+                            <div class="inventory-card-title-group">
+                                <div class="inventory-card-title">${getSubstanceName(item.substanceId)}</div>
+                                <div class="inventory-card-subtitle">${vialSize}mg vials • BAC</div>
+                            </div>
+                            <div class="inventory-card-badges">
+                                ${isLowStock ? '<span class="stock-badge low">Low Stock</span>' : ''}
+                                <button class="card-icon-btn" onclick="openEditModal('${item.substanceId}')" title="Edit">✏️</button>
+                                <button class="card-icon-btn delete" onclick="confirmDelete('${item.substanceId}')" title="Delete">🗑️</button>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: ${progressPercent}%"></div>
+                        </div>
+                        
+                        <div class="inventory-stats-grid">
+                            <div class="inventory-stat">
+                                <div class="inventory-stat-value">${item.totalMg.toFixed(1)}</div>
+                                <div class="inventory-stat-label">MG LEFT</div>
+                            </div>
+                            <div class="inventory-stat">
+                                <div class="inventory-stat-value">${item.totalDoses}</div>
+                                <div class="inventory-stat-label">DOSES</div>
+                            </div>
+                            <div class="inventory-stat">
+                                <div class="inventory-stat-value">${item.totalVials}</div>
+                                <div class="inventory-stat-label">VIALS</div>
+                            </div>
+                        </div>
+                        
+                        <button class="add-vial-btn" onclick="openUseSellModal('${item.substanceId}')">
+                            + Add Vial (${vialSize}mg)
+                        </button>
+                    </div>
+                `;
+            }).join('')}
+        </div>
     `;
 }
+
+// Placeholder functions for edit and delete
+function openEditModal(substanceId) {
+    alert('Edit functionality - coming soon!');
+}
+
+function confirmDelete(substanceId) {
+    if (confirm('Are you sure you want to delete this substance from inventory?')) {
+        inventory = inventory.filter(item => item.substanceId !== substanceId);
+        transactions = transactions.filter(t => t.substanceId !== substanceId);
+        saveData();
+        renderInventory();
+        renderDashboard();
+    }
+}
+
+window.openEditModal = openEditModal;
+window.confirmDelete = confirmDelete;
 
 function showInventoryDetails(substanceId) {
     const items = inventory.filter(i => i.substanceId === substanceId);
